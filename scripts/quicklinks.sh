@@ -28,37 +28,38 @@ elif [[ ( "$theme" == *'type-2'* ) || ( "$theme" == *'type-4'* ) ]]; then
 fi
 
 if [[ ( "$theme" == *'type-1'* ) || ( "$theme" == *'type-5'* ) ]]; then
-	efonts="JetBrains Mono Nerd Font 10"
+	efonts="JetBrains Mono Nerd Font 12"
 else
-	efonts="JetBrains Mono Nerd Font 28"
+	efonts="JetBrains Mono Nerd Font 36"
 fi
 
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
 	option_1=""
-	option_2=""
-	option_3=""
-	option_4=""
-	option_5=""
-	option_6=""
-	option_7=""
-	option_8=""
+	option_2="◐"
+	option_3=""
+	option_4=""
+	option_5=""
+	option_6=""
+	option_7=""
+	option_8=""
+	option_9=""
 else
 	option_1=""
-	option_2=""
-	option_3=""
-	option_4=""
-	option_5=""
-	option_6=""
-	option_7=""
-	option_8=""
-
+	option_2="◐"
+	option_3=""
+	option_4=""
+	option_5=""
+	option_6=""
+	option_7=""
+	option_8=""
+	option_9=""
 fi
 
 # Rofi CMD
 rofi_cmd() {
-	rofi -theme-str "listview {columns: 8; lines: 1;}" \
+	rofi -theme-str "listview {columns: 9; lines: 1;}" \
 		-theme-str 'textbox-prompt-colon {str: "";}' \
 		-theme-str "element-text {font: \"$efonts\";}" \
 		-dmenu \
@@ -70,7 +71,7 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8" | rofi_cmd
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n$option_9" | rofi_cmd
 }
 
 # Execute Command
@@ -78,18 +79,20 @@ run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
 		alacritty
 	elif [[ "$1" == '--opt2' ]]; then
-		google-chrome-stable --profile-directory="$DROPDATABASEALEJANDRO" 'https://teams.microsoft.com/'
+		/home/al3xmm14/.secrets/scripts/set_mode.sh
 	elif [[ "$1" == '--opt3' ]]; then
-		google-chrome-stable --profile-directory="$ALEJANDROMOLINAMEDINA" 'https://teams.microsoft.com/'
+		google-chrome-stable --profile-directory="$DROPDATABASEALEJANDRO" 'https://teams.microsoft.com/'
 	elif [[ "$1" == '--opt4' ]]; then
-		flatpak run com.spotify.Client
+		google-chrome-stable --profile-directory="$ALEJANDROMOLINAMEDINA" 'https://teams.microsoft.com/'
 	elif [[ "$1" == '--opt5' ]]; then
-		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=hnpfjngllnobngcgfapefoaidbinmjnm --class=whatsapp-desktop
+		flatpak run com.spotify.Client
 	elif [[ "$1" == '--opt6' ]]; then
-		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=aenkghcjmafhmiloejakejkpbhaipmjc --class=gemini-desktop
+		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=hnpfjngllnobngcgfapefoaidbinmjnm --class=whatsapp-desktop
 	elif [[ "$1" == '--opt7' ]]; then
-		google-chrome-stable --profile-directory="$MOLINAA757" 'https://www.github.com/'
+		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=aenkghcjmafhmiloejakejkpbhaipmjc --class=gemini-desktop
 	elif [[ "$1" == '--opt8' ]]; then
+		google-chrome-stable --profile-directory="$MOLINAA757" 'https://www.github.com/'
+	elif [[ "$1" == '--opt9' ]]; then
 		google-chrome-stable
 	fi
 }
@@ -120,5 +123,8 @@ case ${chosen} in
         ;;
 	$option_8)
 		run_cmd --opt8
+        ;;
+	$option_9)
+		run_cmd --opt9
         ;;
 esac
