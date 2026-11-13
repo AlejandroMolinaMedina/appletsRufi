@@ -7,8 +7,6 @@
 
 # Chrome Profiles
 MOLINAA757="Default"
-DROPDATABASEALEJANDRO="Profile 1"
-ALEJANDROMOLINAMEDINA="Profile 2"
 BROWSER="Google-Chrome"
 
 # Import Current Theme
@@ -38,28 +36,24 @@ layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
 	option_1=""
 	option_2="◐"
-	option_3=""
-	option_4=""
-	option_5=""
-	option_6=""
-	option_7=""
-	option_8=""
-	option_9=""
+	option_3=""
+	option_4=""
+	option_5=""
+	option_6=""
+	option_7=""
 else
 	option_1=""
 	option_2="◐"
-	option_3=""
-	option_4=""
-	option_5=""
-	option_6=""
-	option_7=""
-	option_8=""
-	option_9=""
+	option_3=""
+	option_4=""
+	option_5=""
+	option_6=""
+	option_7=""
 fi
 
 # Rofi CMD
 rofi_cmd() {
-	rofi -theme-str "listview {columns: 9; lines: 1;}" \
+	rofi -theme-str "listview {columns: 7; lines: 1;}" \
 		-theme-str 'textbox-prompt-colon {str: "";}' \
 		-theme-str "element-text {font: \"$efonts\";}" \
 		-dmenu \
@@ -71,7 +65,7 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n$option_9" | rofi_cmd
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7" | rofi_cmd
 }
 
 # Execute Command
@@ -81,18 +75,14 @@ run_cmd() {
 	elif [[ "$1" == '--opt2' ]]; then
 		/home/al3xmm14/.secrets/scripts/set_mode.sh
 	elif [[ "$1" == '--opt3' ]]; then
-		google-chrome-stable --profile-directory="$DROPDATABASEALEJANDRO" 'https://teams.microsoft.com/'
-	elif [[ "$1" == '--opt4' ]]; then
-		google-chrome-stable --profile-directory="$ALEJANDROMOLINAMEDINA" 'https://teams.microsoft.com/'
-	elif [[ "$1" == '--opt5' ]]; then
 		flatpak run com.spotify.Client
-	elif [[ "$1" == '--opt6' ]]; then
+	elif [[ "$1" == '--opt4' ]]; then
 		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=hnpfjngllnobngcgfapefoaidbinmjnm --class=whatsapp-desktop
-	elif [[ "$1" == '--opt7' ]]; then
+	elif [[ "$1" == '--opt5' ]]; then
 		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=aenkghcjmafhmiloejakejkpbhaipmjc --class=gemini-desktop
-	elif [[ "$1" == '--opt8' ]]; then
+	elif [[ "$1" == '--opt6' ]]; then
 		google-chrome-stable --profile-directory="$MOLINAA757" 'https://www.github.com/'
-	elif [[ "$1" == '--opt9' ]]; then
+	elif [[ "$1" == '--opt7' ]]; then
 		google-chrome-stable
 	fi
 }
@@ -106,10 +96,10 @@ case ${chosen} in
     $option_2)
 		run_cmd --opt2
         ;;
-    $option_3)
+	$option_3)
 		run_cmd --opt3
         ;;
-    $option_4)
+	$option_4)
 		run_cmd --opt4
         ;;
 	$option_5)
@@ -120,11 +110,5 @@ case ${chosen} in
         ;;
 	$option_7)
 		run_cmd --opt7
-        ;;
-	$option_8)
-		run_cmd --opt8
-        ;;
-	$option_9)
-		run_cmd --opt9
         ;;
 esac
